@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اکسسوری وینا</title>
+
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<!-- کد سرچ و لوگو و منو ها  -->
+
+<header>
+
+    <div class="header-1">
+
+        <a href="#" class="logo"><img src="img/1.png"></a>
+
+        <form action="" class="search-box-container">
+            <input type="search" id="search-box" placeholder="جستجو کنید">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+    </div>
+
+    <div class="header-2">
+
+        <div id="menu-bar" class="fas fa-bars"></div>
+
+        <nav class="navbar">
+            <a href="#home">خانه</a>
+            <a href="#category">دسته بندی</a>
+            <a href="#product">محصولات</a>
+            <a href="#review">نظرات</a>
+            <a href="conect.html">تماس</a>
+        </nav>
+
+        <div class="icons">
+          
+                        <a href="vorod.html" class="fas fa-user-circle"></a>
+                                    <!-- <button id="cart-button" class="btn">نمایش سبد خرید</button>
+<div id="cart-content" style="display: none;">
+    <h2>سبد خرید</h2>
+    <ul id="cart-items"></ul>
+</div> -->
+<!-- دکمه سبد خرید و محتوای آن -->
+<button id="cart-button" class="btn">سبد خرید</button>
+
+
+<!-- پاپ‌آپ سبد خرید -->
+<div id="cart-popup" class="cart-popup" style="z-index: +9999;">
+    <div class="cart-popup-content">
+        <span class="close">&times;</span>
+        <h2>سبد خرید</h2>
+        <ul id="cart-items"></ul>
+        <p class="total-price">جمع کل: <span id="total-price">0 تومان</span></p>
+        <button id="cart-button" class="btn" ><a href="dargah.html"> ادامه فرآیند</button></a>
+    </div>
+</div>
+        </div>
+
+    </div>
+
+</header>
+
+<!-- اتمام کد سرچ و... -->
+
+<!-- کد کاسیو  -->
+
+<section class="home" id="home">
+
+    <div class="image">
+        <img src="img/7.jpg" alt="">
+    </div>
+
+    <div class="content">
+        <span> کاسیو </span>
+        <h3>   اگر چیزی به اندازه کافی اورجینال و خاص نیست  
+            <br>
+        پس قطعا کاسیو نیست
+        </h3>
+        <a href="#" class="btn"> خرید کنید</a>
+    </div>
+
+</section>
+
+<!-- اتمام کد  -->
+
+<!-- کد بنر های تخفیفی  -->
+
+<section class="banner-container">
+
+    <div class="banner">
+        <img src="img/34.jpeg" alt="">
+        <div class="content">
+            
+            <p>حداکثر 45٪ تخفیف</p>
+            <a href="#" class="btn">خرید کنید</a>
+        </div>
+    </div>
+
+    <div class="banner">
+        <img src="img/35.jpeg" alt="">
+        <div class="content">
+         
+            <p>حداکثر 70٪ تخفیف</p>
+            <a href="#" class="btn">خرید کنید</a>
+        </div>
+    </div>
+
+</section>
+
+<!-- اتمام کد بنر -->
+
+<!-- کد دسته بندی -->
+
+<section class="category" id="category">
+
+    <h1 class="heading">خرید به وسیله ی <span>دسته بندی</span></h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>گوشواره</h3>
+           
+            <img src="img/8.jpg" alt="">
+            <a href="#" class="btn">الان خرید کن</a>
+        </div>
+        <div class="box">
+            <h3>گردنبند </h3>
+            
+            <img src="img/4.jpg" alt="">
+            <a href="#" class="btn">الان خرید کن</a>
+        </div>
+        <div class="box">
+            <h3>ساعت</h3>
+           
+            <img src="img/9.jfif" alt="">
+            <a href="#" class="btn">الان خرید کن</a>
+        </div>
+        <div class="box">
+            <h3>  انگشتر</h3>
+            
+            <img src="img/13.jpg" alt="">
+            <a href="#" class="btn">الان خرید کن</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- اتمام کد دسته بندی -->
+
+<!-- کد اخرین محصولات  -->
+
+<section class="product" id="product">
+
+    <h1 class="heading">آخرین <span>محصولات</span></h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            
+          
+            <div class="image">
+                <img src="img/25.jpg" alt="">
+            </div>
+            
+            <div class="content">
+                <h3>  گردنبند قلب</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">4200000هزار تومان </div>
+               
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+        <div class="box">
+            
+          
+            
+            <div class="image">
+                <img src="img/26.jpg" alt="">
+            </div>
+            
+            <div class="content">
+                <h3>  ساعت مردانه</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">60000000 هزار تومان </div>
+               
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+
+        <div class="box">
+            
+          
+            
+            <div class="image">
+                <img src="img/30.jpg" alt="">
+            </div>
+            
+            <div class="content">
+                <h3>  دستبند مردانه</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">6200000 هزار تومان </div>
+               
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+
+        <div class="box">
+            
+          
+            
+            <div class="image">
+                <img src="img/27.png" alt="">
+            </div>
+            
+            <div class="content">
+                <h3> ساعت ست </h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">85000000 هزار تومان </div>
+               
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+
+
+        <div class="box">
+            
+          
+           
+            <div class="image">
+                <img src="img/28.jpg" alt="">
+            </div>
+            
+            <div class="content">
+                <h3>  دستبند </h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">2300000 هزار تومان </div>
+               
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+
+
+        <div class="box">
+            
+          
+            
+            <div class="image">
+                <img src="img/29.jpg" alt="">
+            </div>
+            
+            <div class="content">
+                <h3> دستبند ست </h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">4600000 هزار تومان </div>
+               
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+
+
+        <div class="box">
+            
+          
+           
+            <div class="image">
+                <img src="img/24.jpg" alt="">
+            </div>
+            
+            <div class="content">
+                <h3>  گردنبند مردانه</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">3500000 هزار تومان </div>
+               
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+
+        <div class="box">
+            
+          
+            
+            <div class="image">
+                <img src="img/23.jpg" alt="">
+            </div>
+            
+            <div class="content">
+                <h3> انگشتر پروانه</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">200000 هزار تومان </div>
+               
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+
+       
+
+    </div>
+
+</section>
+
+<!-- اتمام کد محصولات -->
+
+<!-- کد نظرات -->
+
+<section class="review" id="review">
+
+    <h1 class="heading"> بازخورد <span>مشتریان</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="img/31.png" alt="">
+            <h3>نسترن </h3>
+            <p>  بسیار عالییییییییییی  واقعا کاراتون زیباست</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/32.png" alt="">
+            <h3>فرید </h3>
+          <p> کاراتون واقعا عالیه موفق باشید</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/33.png" alt="">
+            <h3> مازیار</h3>
+            <p>محشرههههه خیلی زیباستتتتت</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- اتمام کد نظرات -->
+
+
+
+
+
+<!-- کد فوتر  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <a href="#" class="logo"><img src="img/1.png"></a>
+            <div class="share">
+                <a href="#" class="btn fab fa-facebook-f"></a>
+                <a href="#" class="btn fab fa-twitter"></a>
+                <a href="#" class="btn fab fa-instagram"></a>
+                <a href="#" class="btn fab fa-linkedin"></a>
+            </div>
+        </div>
+        
+        <div class="box">
+            <h3>مکان ما</h3>
+            <div class="links">
+                <a href="#">تهران</a>
+               
+                <a href="#">اصفهان</a>
+                <a href="#">شیراز</a>
+                <a href="#">همدان</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>دسترسی سریع</h3>
+            <div class="links">
+                <a href="#header-1">خانه</a>
+                <a href="##category">دسته بندی</a>
+                <a href="#product">محصولات</a>
+                <a href="#review">نظرات</a>
+                
+            </div>
+        </div>
+
+
+        <div class="box">
+            <h3>اطلاعات تماس</h3>
+            
+            <a href="#"> <i class="fas fa-phone"></i> +98-0938456923 </a>
+            <br>
+            <a href="#"> <i class="fas fa-envelope"></i> vina2020123@gmail.com </a>
+        </br>
+            <a href="#"> <i class="fas fa-envelope"></i> همدان    </a>
+        </div>
+       
+
+    </div>
+
+    <h1 class="credit">      کلیه حقوق محفوظ است </h1>
+
+</section>
+
+<!-- اتمام کد فوتر -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+    
+</body>
+</html>
