@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اکسسوری وینا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* ==================== تنظیمات کلی ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            text-decoration: none;
+            list-style: none;
+            outline: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        :root {
+            --main-color: #c9a227;
+            --dark-color: #222;
+            --light-color: #f5f5f5;
+            --white: #fff;
+            --gray: #777;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--light-color);
+            direction: rtl;
+            padding-top: 140px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--main-color);
+            color: var(--white);
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: var(--dark-color);
+            color: var(--main-color);
+        }
+
+        /* ==================== هدر ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo img {
+            height: 55px;
+        }
+
+        .search-box-container {
+            display: flex;
+            align-items: center;
+            background: var(--light-color);
+            border-radius: 30px;
+            padding: 8px 18px;
+            width: 350px;
+        }
+
+        .search-box-container input {
+            flex: 1;
+            background: transparent;
+            font-size: 15px;
+        }
+
+        .search-box-container label {
+            color: var(--main-color);
+            cursor: pointer;
+        }
+
+        .header-2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 40px;
+            background: var(--dark-color);
+        }
+
+        #menu-bar {
+            display: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .navbar a {
+            color: var(--white);
+            margin-left: 28px;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .navbar a:hover {
+            color: var(--main-color);
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icons > a {
+            color: var(--white);
+            font-size: 22px;
+        }
+
+        .icons > a:hover {
+            color: var(--main-color);
+        }
+
+        #cart-button {
+            background: var(--main-color);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #cart-button:hover {
+            background: var(--white);
+            color: var(--main-color);
+        }
+
+        /* ==================== پاپ آپ سبد خرید ==================== */
+        .cart-popup {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 9999;
+        }
+
+        .cart-popup.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-popup-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            width: 420px;
+            max-width: 92%;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .cart-popup-content .close {
+            position: absolute;
+            top: 12px;
+            left: 18px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .cart-popup-content h2 {
+            margin-bottom: 18px;
+            color: var(--dark-color);
+        }
+
+        #cart-items li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+            font-size: 15px;
+        }
+
+        .total-price {
+            margin: 18px 0;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        /* ==================== بخش خانه / کاسیو ==================== */
+        .home {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: var(--white);
+            min-height: 420px;
+        }
+
+        .home .image img {
+            width: 380px;
+            max-width: 100%;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .home .content {
+            max-width: 480px;
+        }
+
+        .home .content span {
+            color: var(--main-color);
+            font-size: 26px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .home .content h3 {
+            font-size: 24px;
+            line-height: 1.8;
+            font-weight: 500;
+            margin-bottom: 22px;
+        }
+
+        .home .content .btn {
+            font-size: 17px;
+            padding: 12px 30px;
+        }
+
+        /* ==================== بنرهای تخفیف ==================== */
+        .banner-container {
+            display: flex;
+            gap: 24px;
+            padding: 50px 40px;
+            flex-wrap: wrap;
+        }
+
+        .banner {
+            flex: 1 1 400px;
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 230px;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+        }
+
+        .banner .content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .banner .content p {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+        }
+
+        /* ==================== دسته بندی ==================== */
+        .category {
+            padding: 60px 40px;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 32px;
+            color: var(--dark-color);
+            margin-bottom: 45px;
+        }
+
+        .heading span {
+            color: var(--main-color);
+        }
+
+        .category .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 26px;
+        }
+
+        .category .box {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .category .box:hover {
+            transform: translateY(-6px);
+        }
+
+        .category .box h3 {
+            font-size: 19px;
+            color: var(--dark-color);
+            margin-bottom: 14px;
+        }
+
+        .category .box img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+
+        /* ==================== محصولات ==================== */
+        .product {
+            padding: 60px 40px;
+            background: var(--white);
+        }
+
+        .product .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 26px;
+        }
+
+        .product .box {
+            background: var(--light-color);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .product .box:hover {
+            transform: translateY(-6px);
+        }
+
+        .product .box .image img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .product .box .content {
+            padding: 18px;
+            text-align: center;
+        }
+
+        .product .box .content h3 {
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: var(--main-color);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .product .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-bottom: 14px;
+        }
+
+        .product .add-to-cart {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* ==================== نظرات ==================== */
+        .review {
+            padding: 60px 40px;
+        }
+
+        .review .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 26px;
+        }
+
+        .review .box {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        }
+
+        .review .box img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 14px;
+            border: 3px solid var(--main-color);
+        }
+
+        .review .box h3 {
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .review .box p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        /* ==================== فوتر ==================== */
+        .footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 60px 40px 20px;
+        }
+
+        .footer .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .footer .box .logo img {
+            height: 55px;
+            margin-bottom: 16px;
+        }
+
+        .footer .share {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer .share .btn {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-radius: 50%;
+            font-size: 17px;
+        }
+
+        .footer .box h3 {
+            color: var(--main-color);
+            margin-bottom: 18px;
+            font-size: 19px;
+        }
+
+        .footer .box .links a,
+        .footer .box > a {
+            display: block;
+            color: #ccc;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .footer .box .links a:hover,
+        .footer .box > a:hover {
+            color: var(--main-color);
+            padding-right: 6px;
+        }
+
+        .footer .credit {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 15px;
+            color: #aaa;
+        }
+
+        /* ==================== ریسپانسیو ==================== */
+        @media (max-width: 900px) {
+            body {
+                padding-top: 120px;
+            }
+
+            .header-1,
+            .header-2 {
+                padding: 10px 20px;
+            }
+
+            .search-box-container {
+                width: 240px;
+            }
+
+            #menu-bar {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                background: var(--dark-color);
+                display: none;
+                flex-direction: column;
+                padding: 16px 20px;
+                border-top: 1px solid #444;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+
+            .navbar a {
+                margin: 10px 0;
+                display: block;
+            }
+
+            .home {
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .home .image img {
+                width: 280px;
+            }
+
+            .banner-container,
+            .category,
+            .product,
+            .review {
+                padding: 40px 20px;
+            }
+
+            .footer {
+                padding: 40px 20px 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .header-1 {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .search-box-container {
+                width: 100%;
+                order: 3;
+            }
+
+            .heading {
+                font-size: 26px;
+            }
+
+            .home .content h3 {
+                font-size: 19px;
+            }
+
+            .banner .content p {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- کد سرچ و لوگو و منو ها -->
+<header>
+    <div class="header-1">
+        <a href="#" class="logo"><img src="img/1.png" alt="لوگو"></a>
+        <form action="" class="search-box-container">
+            <input type="search" id="search-box" placeholder="جستجو کنید">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+    </div>
+
+    <div class="header-2">
+        <div id="menu-bar" class="fas fa-bars"></div>
+        <nav class="navbar">
+            <a href="#home">خانه</a>
+            <a href="#category">دسته بندی</a>
+            <a href="#product">محصولات</a>
+            <a href="#review">نظرات</a>
+            <a href="conect.html">تماس</a>
+        </nav>
+
+        <div class="icons">
+            <a href="vorod.html" class="fas fa-user-circle"></a>
+            <button id="cart-button" class="btn">سبد خرید</button>
+
+            <!-- پاپ‌آپ سبد خرید -->
+            <div id="cart-popup" class="cart-popup">
+                <div class="cart-popup-content">
+                    <span class="close">&times;</span>
+                    <h2>سبد خرید</h2>
+                    <ul id="cart-items"></ul>
+                    <p class="total-price">جمع کل: <span id="total-price">0 تومان</span></p>
+                    <a href="dargah.html"><button class="btn">ادامه فرآیند</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- کد کاسیو -->
+<section class="home" id="home">
+    <div class="image">
+        <img src="img/7.jpg" alt="">
+    </div>
+    <div class="content">
+        <span>کاسیو</span>
+        <h3>
+            اگر چیزی به اندازه کافی اورجینال و خاص نیست
+            <br>
+            پس قطعا کاسیو نیست
+        </h3>
+        <a href="#" class="btn">خرید کنید</a>
+    </div>
+</section>
+
+<!-- کد بنر های تخفیفی -->
+<section class="banner-container">
+    <div class="banner">
+        <img src="img/34.jpeg" alt="">
+        <div class="content">
+            <p>حداکثر 45٪ تخفیف</p>
+            <a href="#" class="btn">خرید کنید</a>
+        </div>
+    </div>
+
+    <div class="banner">
+        <img src="img/35.jpeg" alt="">
+        <div class="content">
+            <p>حداکثر 70٪ تخفیف</p>
+            <a href="#" class="btn">خرید کنید</a>
+        </div>
+    </div>
+</section>
+
+<!-- کد دسته بندی -->
+<section class="category" id="category">
+    <h1 class="heading">خرید به وسیله ی <span>دسته بندی</span></h1>
+
+    <div class="box-container">
+        <div class="box">
+            <h3>گوشواره</h3>
+            <img src="img/8.jpg" alt="">
+            <a href="#" class="btn">الان خرید کن</a>
+        </div>
+        <div class="box">
+            <h3>گردنبند</h3>
+            <img src="img/4.jpg" alt="">
+            <a href="#" class="btn">الان خرید کن</a>
+        </div>
+        <div class="box">
+            <h3>ساعت</h3>
+            <img src="img/9.jfif" alt="">
+            <a href="#" class="btn">الان خرید کن</a>
+        </div>
+        <div class="box">
+            <h3>انگشتر</h3>
+            <img src="img/13.jpg" alt="">
+            <a href="#" class="btn">الان خرید کن</a>
+        </div>
+    </div>
+</section>
+
+<!-- کد اخرین محصولات -->
+<section class="product" id="product">
+    <h1 class="heading">آخرین <span>محصولات</span></h1>
+
+    <div class="box-container">
+        <div class="box">
+            <div class="image">
+                <img src="img/25.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>گردنبند قلب</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">4200000 هزار تومان</div>
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="img/26.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>ساعت مردانه</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">60000000 هزار تومان</div>
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="img/30.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>دستبند مردانه</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">6200000 هزار تومان</div>
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="img/27.png" alt="">
+            </div>
+            <div class="content">
+                <h3>ساعت ست</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">85000000 هزار تومان</div>
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="img/28.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>دستبند</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">2300000 هزار تومان</div>
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="img/29.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>دستبند ست</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">4600000 هزار تومان</div>
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="img/24.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>گردنبند مردانه</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">3500000 هزار تومان</div>
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="img/23.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>انگشتر پروانه</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">200000 هزار تومان</div>
+                <a href="#" class="btn add-to-cart">اضافه کردن به سبد خرید</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- کد نظرات -->
+<section class="review" id="review">
+    <h1 class="heading">بازخورد <span>مشتریان</span></h1>
+
+    <div class="box-container">
+        <div class="box">
+            <img src="img/31.png" alt="">
+            <h3>نسترن</h3>
+            <p>بسیار عالییییییییییی واقعا کاراتون زیباست</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/32.png" alt="">
+            <h3>فرید</h3>
+            <p>کاراتون واقعا عالیه موفق باشید</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/33.png" alt="">
+            <h3>مازیار</h3>
+            <p>محشرههههه خیلی زیباستتتتت</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- کد فوتر -->
+<section class="footer">
+    <div class="box-container">
+        <div class="box">
+            <a href="#" class="logo"><img src="img/1.png" alt=""></a>
+            <div class="share">
+                <a href="#" class="btn fab fa-facebook-f"></a>
+                <a href="#" class="btn fab fa-twitter"></a>
+                <a href="#" class="btn fab fa-instagram"></a>
+                <a href="#" class="btn fab fa-linkedin"></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>مکان ما</h3>
+            <div class="links">
+                <a href="#">تهران</a>
+                <a href="#">اصفهان</a>
+                <a href="#">شیراز</a>
+                <a href="#">همدان</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>دسترسی سریع</h3>
+            <div class="links">
+                <a href="#home">خانه</a>
+                <a href="#category">دسته بندی</a>
+                <a href="#product">محصولات</a>
+                <a href="#review">نظرات</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>اطلاعات تماس</h3>
+            <a href="#"> <i class="fas fa-phone"></i> +98-0938456923 </a>
+            <br>
+            <a href="#"> <i class="fas fa-envelope"></i> vina2020123@gmail.com </a>
+            <br>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> همدان </a>
+        </div>
+    </div>
+
+    <h1 class="credit">کلیه حقوق محفوظ است</h1>
+</section>
+
+<!-- اسکریپت‌های داخلی -->
+<script>
+    // منوی همبرگری موبایل
+    document.getElementById('menu-bar').addEventListener('click', () => {
+        document.querySelector('.navbar').classList.toggle('active');
+    });
+
+    // باز/بسته کردن پاپ آپ سبد خرید
+    const cartButton = document.getElementById('cart-button');
+    const cartPopup = document.getElementById('cart-popup');
+    const closeBtn = document.querySelector('.cart-popup-content .close');
+
+    cartButton.addEventListener('click', () => {
+        cartPopup.classList.add('show');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        cartPopup.classList.remove('show');
+    });
+
+    cartPopup.addEventListener('click', (e) => {
+        if (e.target === cartPopup) {
+            cartPopup.classList.remove('show');
+        }
+    });
+</script>
+
+</body>
+</html>
